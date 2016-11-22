@@ -50,31 +50,35 @@ def pascal(n):
 
 
 def nomods(n, k):
-    return 1
+    return [] if n is 1 and k is 1 else [i for i in range(1, n) if not i % k]
 
 
 def everyk(xs, k):
-    return 1
+    return xs[::k]
 
 
 def square(n):
-    return 1
+    return [[(j + 1)*(i + 1) for j in range(n)] for i in range(n)]
 
 
 def makeIndex(s):
-    return 1
+    index = {}
+    for i, letter in enumerate(s):
+        index[letter] = index.get(letter, []) + [i]
+    return index
 
 
 def before1st(x, s):
-    return 1
+    return s.split(x)[0]
 
 
 def splitat2nd(x, s):
-    return 1
+    broken = s.split(x, 2)
+    return (broken[0] + x + broken[1], broken[2])
 
 
 def stairs(n):
-    return 1
+    return n if n < 4 else stairs(n - 1) + stairs(n - 2)
 
 
 def noland(n):
@@ -126,7 +130,7 @@ print(json.dumps({
         'a': [0, 3, 5],
         'b': [1, 2],
         'g': [7, 9],
-        '0': [8, 10],
+        'o': [8],
         '-': [6],
         ' ': [4]
     },
